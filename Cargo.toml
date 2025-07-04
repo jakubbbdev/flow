@@ -1,6 +1,38 @@
 [package]
 name = "flow"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
+tucana = { version = "0.0.31", features = ["aquila"] }
+tokio = "1.43.0"
+async-trait = "0.1.85"
+log = "0.4.24"
+redis = { version = "0.32.0", features = [
+    "aio",
+    "tokio-comp",
+    "async-std-comp",
+    "json",
+] }
+serde_json = "1.0.138"
+serde = "1.0.138"
+lapin = "3.0.0"
+futures-lite = "2.6.0"
+tonic = "0.13.0"
+dotenv = "0.15.0"
+
+
+[dev-dependencies]
+testcontainers = "0.24.0"
+serial_test = "3.2.0"
+
+[lib]
+doctest = true
+
+[features]
+default = ["all"]
+flow_queue = []
+flow_store = []
+flow_definition = []
+flow_config = []
+all = ["flow_queue", "flow_store", "flow_definition", "flow_config"]
